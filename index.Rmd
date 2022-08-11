@@ -1,0 +1,9 @@
+---
+title: "Simple Website"
+author: "Austin Webb"
+date: "2022-08-11"
+output: html_document
+---
+
+# The simple yet awesome website
+## Note the six lines above are the YAML tags
