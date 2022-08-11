@@ -1,0 +1,9 @@
+name: "Austin Webb"
+navbar:
+  title: "My Data Science Website"
+  type: "Inverse"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Beer Project Description"
+      href: MSDS_6306_Beer_Project.html
