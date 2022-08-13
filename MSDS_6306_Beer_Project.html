@@ -362,12 +362,10 @@ brewery dataset has 558 observations four columns.</p>
 <p>We will first look at a table that shows the number of breweries in
 each state. We will then look at a map of the USA that is color coded to
 visually show the amount of breweries in each state.</p>
-<pre><code>##  AK  AL  AR  AZ  CA  CO  CT  DC  DE  FL  GA  HI  IA  ID  IL  IN  KS  KY  LA  MA 
-##   7   3   2  11  39  47   8   1   2  15   7   4   5   5  18  22   3   4   5  23 
-##  MD  ME  MI  MN  MO  MS  MT  NC  ND  NE  NH  NJ  NM  NV  NY  OH  OK  OR  PA  RI 
-##   7   9  32  12   9   2   9  19   1   5   3   3   4   2  16  15   6  29  25   5 
-##  SC  SD  TN  TX  UT  VA  VT  WA  WI  WV  WY 
-##   4   1   3  28   4  16  10  23  20   1   4</code></pre>
+<pre><code>##  AK  AL  AR  AZ  CA  CO  CT  DC  DE  FL  GA  HI  IA  ID  IL  IN  KS  KY  LA  MA  MD  ME  MI  MN  MO  MS  MT  NC  ND  NE  NH  NJ  NM  NV  NY 
+##   7   3   2  11  39  47   8   1   2  15   7   4   5   5  18  22   3   4   5  23   7   9  32  12   9   2   9  19   1   5   3   3   4   2  16 
+##  OH  OK  OR  PA  RI  SC  SD  TN  TX  UT  VA  VT  WA  WI  WV  WY 
+##  15   6  29  25   5   4   1   3  28   4  16  10  23  20   1   4</code></pre>
 <p>Below is the table that shows the number of breweries in each
 state:</p>
 <p>AK AL AR AZ CA CO CT DC DE FL GA HI 7 3 2 11 39 47 8 1 2 15 7 4 IA ID
@@ -386,48 +384,20 @@ state with the most breweries is Colorado with 47 breweries.</p>
 <p>Here is where we merge the two datsets into one. We do this by
 merging on the ‘Brewery_id’ from the beer dataset and ‘Brew_ID’ from the
 brewery dataset.</p>
-<pre><code>##   Brewery_id        Name.x Beer_ID   ABV IBU
-## 1          1  Get Together    2692 0.045  50
-## 2          1 Maggie&#39;s Leap    2691 0.049  26
-## 3          1    Wall&#39;s End    2690 0.048  19
-## 4          1       Pumpion    2689 0.060  38
-## 5          1    Stronghold    2688 0.060  25
-## 6          1   Parapet ESB    2687 0.056  47
-##                                 Style Ounces             Name.y        City
-## 1                        American IPA     16 NorthGate Brewing  Minneapolis
-## 2                  Milk / Sweet Stout     16 NorthGate Brewing  Minneapolis
-## 3                   English Brown Ale     16 NorthGate Brewing  Minneapolis
-## 4                         Pumpkin Ale     16 NorthGate Brewing  Minneapolis
-## 5                     American Porter     16 NorthGate Brewing  Minneapolis
-## 6 Extra Special / Strong Bitter (ESB)     16 NorthGate Brewing  Minneapolis
-##   State
-## 1    MN
-## 2    MN
-## 3    MN
-## 4    MN
-## 5    MN
-## 6    MN</code></pre>
-<pre><code>##      Brewery_id                    Name.x Beer_ID   ABV IBU
-## 2405        556             Pilsner Ukiah      98 0.055  NA
-## 2406        557  Heinnieweisse Weissebier      52 0.049  NA
-## 2407        557           Snapperhead IPA      51 0.068  NA
-## 2408        557         Moo Thunder Stout      50 0.049  NA
-## 2409        557         Porkslap Pale Ale      49 0.043  NA
-## 2410        558 Urban Wilderness Pale Ale      30 0.049  NA
-##                        Style Ounces                        Name.y          City
-## 2405         German Pilsener     12         Ukiah Brewing Company         Ukiah
-## 2406              Hefeweizen     12       Butternuts Beer and Ale Garrattsville
-## 2407            American IPA     12       Butternuts Beer and Ale Garrattsville
-## 2408      Milk / Sweet Stout     12       Butternuts Beer and Ale Garrattsville
-## 2409 American Pale Ale (APA)     12       Butternuts Beer and Ale Garrattsville
-## 2410        English Pale Ale     12 Sleeping Lady Brewing Company     Anchorage
-##      State
-## 2405    CA
-## 2406    NY
-## 2407    NY
-## 2408    NY
-## 2409    NY
-## 2410    AK</code></pre>
+<pre><code>##   Brewery_id        Name.x Beer_ID   ABV IBU                               Style Ounces             Name.y        City State
+## 1          1  Get Together    2692 0.045  50                        American IPA     16 NorthGate Brewing  Minneapolis    MN
+## 2          1 Maggie&#39;s Leap    2691 0.049  26                  Milk / Sweet Stout     16 NorthGate Brewing  Minneapolis    MN
+## 3          1    Wall&#39;s End    2690 0.048  19                   English Brown Ale     16 NorthGate Brewing  Minneapolis    MN
+## 4          1       Pumpion    2689 0.060  38                         Pumpkin Ale     16 NorthGate Brewing  Minneapolis    MN
+## 5          1    Stronghold    2688 0.060  25                     American Porter     16 NorthGate Brewing  Minneapolis    MN
+## 6          1   Parapet ESB    2687 0.056  47 Extra Special / Strong Bitter (ESB)     16 NorthGate Brewing  Minneapolis    MN</code></pre>
+<pre><code>##      Brewery_id                    Name.x Beer_ID   ABV IBU                   Style Ounces                        Name.y          City State
+## 2405        556             Pilsner Ukiah      98 0.055  NA         German Pilsener     12         Ukiah Brewing Company         Ukiah    CA
+## 2406        557  Heinnieweisse Weissebier      52 0.049  NA              Hefeweizen     12       Butternuts Beer and Ale Garrattsville    NY
+## 2407        557           Snapperhead IPA      51 0.068  NA            American IPA     12       Butternuts Beer and Ale Garrattsville    NY
+## 2408        557         Moo Thunder Stout      50 0.049  NA      Milk / Sweet Stout     12       Butternuts Beer and Ale Garrattsville    NY
+## 2409        557         Porkslap Pale Ale      49 0.043  NA American Pale Ale (APA)     12       Butternuts Beer and Ale Garrattsville    NY
+## 2410        558 Urban Wilderness Pale Ale      30 0.049  NA        English Pale Ale     12 Sleeping Lady Brewing Company     Anchorage    AK</code></pre>
 <p>We then look at the first six and final six observations from the new
 merged dataset.</p>
 </div>
@@ -438,10 +408,8 @@ merged dataset.</p>
 <h2>Missing values</h2>
 <p>We use a simple formula here to count the number of missing values in
 each column.</p>
-<pre><code>## Brewery_id     Name.x    Beer_ID        ABV        IBU      Style     Ounces 
-##          0          0          0         62       1005          0          0 
-##     Name.y       City      State 
-##          0          0          0</code></pre>
+<pre><code>## Brewery_id     Name.x    Beer_ID        ABV        IBU      Style     Ounces     Name.y       City      State 
+##          0          0          0         62       1005          0          0          0          0          0</code></pre>
 <p>From this table, we see that there are 62 missing values for ABV and
 1005 missing values for IBU.</p>
 </div>
@@ -449,8 +417,7 @@ each column.</p>
 <h2>Plotting missing values</h2>
 <p>We now look at a visually appealing way to see the missing data</p>
 <pre class="r"><code>gg_miss_var(beer_brewery_merged)</code></pre>
-<pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
-## use `guide = &quot;none&quot;` instead.</code></pre>
+<pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please use `guide = &quot;none&quot;` instead.</code></pre>
 <p><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="categorizing-beer-type" class="section level2">
@@ -458,12 +425,10 @@ each column.</p>
 <p>We want to group the different beers by type of beer. We do this by
 creating a list of common beer types and assigning by the name of the
 beer.</p>
-<pre><code>##         Ale       Cider       Fruit  Hefeweizen         IPA      Kölsch 
-##         976          37          49          40         558          42 
-##       Lager Oktoberfest       Other     Pilsner      Porter       Stout 
-##         158          30         204          91          74         100 
-##     Witbier 
-##          51</code></pre>
+<pre><code>##         Ale       Cider       Fruit  Hefeweizen         IPA      Kölsch       Lager Oktoberfest       Other     Pilsner      Porter 
+##         976          37          49          40         558          42         158          30         204          91          74 
+##       Stout     Witbier 
+##         100          51</code></pre>
 <p>From this grouping, we see that there are 976 ales, 558 IPAs, and a
 variety of other beer types.</p>
 <p>We use this code to see how the ABV and IBU compare for all the
@@ -478,10 +443,10 @@ We will take care of these in the next chunk of code.</p>
 <p>We create a new df with the ciders filtered out. we then recreate the
 above plots that show how the ABV and IBU compare for all the different
 types of beers</p>
-<pre><code>##         Ale       Fruit  Hefeweizen         IPA      Kölsch       Lager 
-##         976          49          40         558          42         158 
-## Oktoberfest       Other     Pilsner      Porter       Stout     Witbier 
-##          30         204          91          74         100          51</code></pre>
+<pre><code>##         Ale       Fruit  Hefeweizen         IPA      Kölsch       Lager Oktoberfest       Other     Pilsner      Porter       Stout 
+##         976          49          40         558          42         158          30         204          91          74         100 
+##     Witbier 
+##          51</code></pre>
 <pre><code>## Warning: Removed 62 rows containing missing values (geom_point).</code></pre>
 <p><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
@@ -562,22 +527,14 @@ in ABV.</p>
 <p>We made a new dataframe that only contains IPA and Ale beer types. We
 built a scatterplot to help visualize the differences between the two
 types of beer and the ABV and IBU.</p>
-<pre><code>##    Brewery_id     Beer Name            Beer_ID            ABV         
-##  Min.   :  1.0   Length:1492        Min.   :   1.0   Min.   :0.02700  
-##  1st Qu.: 93.0   Class :character   1st Qu.: 792.8   1st Qu.:0.05100  
-##  Median :205.0   Mode  :character   Median :1474.5   Median :0.06000  
-##  Mean   :230.1                      Mean   :1431.8   Mean   :0.06131  
-##  3rd Qu.:361.2                      3rd Qu.:2076.2   3rd Qu.:0.07000  
-##  Max.   :558.0                      Max.   :2692.0   Max.   :0.09900  
-##                                                                       
-##       IBU            Style               Ounces      Brewery Name      
-##  Min.   :  4.00   Length:1492        Min.   :12.00   Length:1492       
-##  1st Qu.: 25.80   Class :character   1st Qu.:12.00   Class :character  
-##  Median : 42.00   Mode  :character   Median :12.00   Mode  :character  
-##  Mean   : 46.97                      Mean   :13.59                     
-##  3rd Qu.: 65.00                      3rd Qu.:16.00                     
-##  Max.   :138.00                      Max.   :32.00                     
-##                                                                        
+<pre><code>##    Brewery_id     Beer Name            Beer_ID            ABV               IBU            Style               Ounces      Brewery Name      
+##  Min.   :  1.0   Length:1492        Min.   :   1.0   Min.   :0.02700   Min.   :  4.00   Length:1492        Min.   :12.00   Length:1492       
+##  1st Qu.: 93.0   Class :character   1st Qu.: 792.8   1st Qu.:0.05100   1st Qu.: 25.80   Class :character   1st Qu.:12.00   Class :character  
+##  Median :205.0   Mode  :character   Median :1474.5   Median :0.06000   Median : 42.00   Mode  :character   Median :12.00   Mode  :character  
+##  Mean   :230.1                      Mean   :1431.8   Mean   :0.06131   Mean   : 46.97                      Mean   :13.59                     
+##  3rd Qu.:361.2                      3rd Qu.:2076.2   3rd Qu.:0.07000   3rd Qu.: 65.00                      3rd Qu.:16.00                     
+##  Max.   :558.0                      Max.   :2692.0   Max.   :0.09900   Max.   :138.00                      Max.   :32.00                     
+##                                                                                                                                              
 ##      City               State           beerCat   
 ##  Length:1492         CO    :170   Ale       :944  
 ##  Class :character    CA    :123   IPA       :548  
