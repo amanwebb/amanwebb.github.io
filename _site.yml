@@ -32,7 +32,7 @@ navbar:
     - text: "GitHub"
       icon: fa-github
       href: https://github.com/amanwebb
-  output:
-    html_document:
-      theme: darkly
+output:
+  html_document:
+    theme: darkly
     
