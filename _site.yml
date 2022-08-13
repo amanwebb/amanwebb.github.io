@@ -1,9 +1,36 @@
 name: "Austin Webb"
 navbar:
-  title: "My Data Science Website"
+  title: "Austin Webb's Portfolio"
   type: "Inverse"
   left:
     - text: "Home"
+      icon: fa-home
       href: index.html
-    - text: "Beer Project Description"
-      href: MSDS_6306_Beer_Project.html
+    - text: "About"
+      href: about.html
+    - text: "Projects"
+      menu:
+        - text: "Term One"
+        - text: "Beer Project Description"
+          href: MSDS_6306_Beer_Project.html
+        - text: "Beer App"
+          href: https://austin-webb.shinyapps.io/Beer_App/
+        - text: "Housing App"
+          href: https://austin-webb.shinyapps.io/Housing/
+        - text: "Attrition App"
+          href: https://austin-webb.shinyapps.io/Frito_Lay_Project/
+        - text: "------------"
+        - text: "Term Two"
+        - text: "------------"
+        - text: "Personal Projects"
+        - text: "Basketball"
+  right:
+    - text: "Contact Me"
+      icon: fa-envelope-o
+      href: mailto: austinwebb@mail.smu.edu
+    - text: "GitHub"
+      icon: fa-github
+      href: https://github.com/amanwebb
+  output:
+    html_document:
+      theme: darkly

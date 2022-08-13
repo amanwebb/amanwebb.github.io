@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Tadd Backus &amp; Austin Webb" />
+
+<meta name="date" content="2022-08-11" />
+
+<title>Beer and Breweries</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-Inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Data Science Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="MSDS_6306_Beer_Project.html">Beer Project Description</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Beer and Breweries</h1>
+<h4 class="author">Tadd Backus &amp; Austin Webb</h4>
+<h4 class="date">2022-08-11</h4>
+
+</div>
+
+
+<div id="introduction-and-overview" class="section level1">
+<h1>Introduction and Overview</h1>
+<p>In this report, we explore the datasets you provided to us; the
+datasets that have information for various beers, and the breweries that
+produce them, in the USA. The steps and procedures taken for this
+analysis are detailed below. We start by looking at basic summary
+statistics, visual graphics, and at the statistical differences between
+ABV (alcohol by volume) and IBU (International Bitterness Units). We
+also looked at the differences between IPAs and other types of Ales.</p>
+<p>The initial data provided were in two separate datasets, one for
+beers and one for breweries, which were later combined into a single
+dataset.</p>
+</div>
+<div id="github" class="section level1">
+<h1>GitHub</h1>
+<p>Our GitHub repository {<a
+href="https://github.com/tadbackus/beerAndBreweries"
+class="uri">https://github.com/tadbackus/beerAndBreweries</a>} has this
+code we used, as well as previously used code. There are also older
+versions of the PowerPoint that we created.</p>
+<ul>
+<li><p><a
+href="https://github.com/tadbackus/beerAndBreweries/blob/main/README.md"><code>README.md</code></a>:
+This page shows an introduction to the analysis we ran. It also includes
+a few details about the datasets provided.</p></li>
+<li><p><a
+href="https://github.com/tadbackus/beerAndBreweries/blob/main/Data/Beer.csv"><code>Beers.csv</code></a>
+and <a
+href="https://github.com/tadbackus/beerAndBreweries/blob/main/Data/Breweries.csv"><code>Breweries.csv</code></a>
+were provided and are the original datasets from which our merged
+dataset is produced.</p></li>
+</ul>
+<p>Here we import all the necessary libraries and packages</p>
+<p>We will read in the beer and brewery data provided</p>
+<p>The beer dataset has 2,410 observations and seven columns. The
+brewery dataset has 558 observations four columns.</p>
+</div>
+<div id="question-1" class="section level1">
+<h1>Question 1</h1>
+<div id="number-of-breweries-in-each-state" class="section level2">
+<h2>Number of Breweries in each state</h2>
+<p>We will first look at a table that shows the number of breweries in
+each state. We will then look at a map of the USA that is color coded to
+visually show the amount of breweries in each state.</p>
+<pre><code>##  AK  AL  AR  AZ  CA  CO  CT  DC  DE  FL  GA  HI  IA  ID  IL  IN  KS  KY  LA  MA  MD  ME  MI  MN  MO  MS  MT  NC  ND  NE  NH  NJ  NM  NV  NY 
+##   7   3   2  11  39  47   8   1   2  15   7   4   5   5  18  22   3   4   5  23   7   9  32  12   9   2   9  19   1   5   3   3   4   2  16 
+##  OH  OK  OR  PA  RI  SC  SD  TN  TX  UT  VA  VT  WA  WI  WV  WY 
+##  15   6  29  25   5   4   1   3  28   4  16  10  23  20   1   4</code></pre>
+<p>Below is the table that shows the number of breweries in each
+state:</p>
+<p>AK AL AR AZ CA CO CT DC DE FL GA HI 7 3 2 11 39 47 8 1 2 15 7 4 IA ID
+IL IN KS KY LA MA MD ME MI MN 5 5 18 22 3 4 5 23 7 9 32 12 MO MS MT NC
+ND NE NH NJ NM NV NY OH 9 2 9 19 1 5 3 3 4 2 16 15 OK OR PA RI SC SD TN
+TX UT VA VT WA 6 29 25 5 4 1 3 28 4 16 10 23 WI WV WY 20 1 4</p>
+<p><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+We can see from the table, and the map as secondary evidence, that the
+state with the most breweries is Colorado with 47 breweries.</p>
+</div>
+</div>
+<div id="question-2" class="section level1">
+<h1>Question 2</h1>
+<div id="combining-the-beer-and-brewery-data" class="section level2">
+<h2>Combining the beer and brewery data</h2>
+<p>Here is where we merge the two datsets into one. We do this by
+merging on the ‘Brewery_id’ from the beer dataset and ‘Brew_ID’ from the
+brewery dataset.</p>
+<pre><code>##   Brewery_id        Name.x Beer_ID   ABV IBU                               Style Ounces             Name.y        City State
+## 1          1  Get Together    2692 0.045  50                        American IPA     16 NorthGate Brewing  Minneapolis    MN
+## 2          1 Maggie&#39;s Leap    2691 0.049  26                  Milk / Sweet Stout     16 NorthGate Brewing  Minneapolis    MN
+## 3          1    Wall&#39;s End    2690 0.048  19                   English Brown Ale     16 NorthGate Brewing  Minneapolis    MN
+## 4          1       Pumpion    2689 0.060  38                         Pumpkin Ale     16 NorthGate Brewing  Minneapolis    MN
+## 5          1    Stronghold    2688 0.060  25                     American Porter     16 NorthGate Brewing  Minneapolis    MN
+## 6          1   Parapet ESB    2687 0.056  47 Extra Special / Strong Bitter (ESB)     16 NorthGate Brewing  Minneapolis    MN</code></pre>
+<pre><code>##      Brewery_id                    Name.x Beer_ID   ABV IBU                   Style Ounces                        Name.y          City State
+## 2405        556             Pilsner Ukiah      98 0.055  NA         German Pilsener     12         Ukiah Brewing Company         Ukiah    CA
+## 2406        557  Heinnieweisse Weissebier      52 0.049  NA              Hefeweizen     12       Butternuts Beer and Ale Garrattsville    NY
+## 2407        557           Snapperhead IPA      51 0.068  NA            American IPA     12       Butternuts Beer and Ale Garrattsville    NY
+## 2408        557         Moo Thunder Stout      50 0.049  NA      Milk / Sweet Stout     12       Butternuts Beer and Ale Garrattsville    NY
+## 2409        557         Porkslap Pale Ale      49 0.043  NA American Pale Ale (APA)     12       Butternuts Beer and Ale Garrattsville    NY
+## 2410        558 Urban Wilderness Pale Ale      30 0.049  NA        English Pale Ale     12 Sleeping Lady Brewing Company     Anchorage    AK</code></pre>
+<p>We then look at the first six and final six observations from the new
+merged dataset.</p>
+</div>
+</div>
+<div id="question-3" class="section level1">
+<h1>Question 3</h1>
+<div id="missing-values" class="section level2">
+<h2>Missing values</h2>
+<p>We use a simple formula here to count the number of missing values in
+each column.</p>
+<pre><code>## Brewery_id     Name.x    Beer_ID        ABV        IBU      Style     Ounces     Name.y       City      State 
+##          0          0          0         62       1005          0          0          0          0          0</code></pre>
+<p>From this table, we see that there are 62 missing values for ABV and
+1005 missing values for IBU.</p>
+</div>
+<div id="plotting-missing-values" class="section level2">
+<h2>Plotting missing values</h2>
+<p>We now look at a visually appealing way to see the missing data</p>
+<pre class="r"><code>gg_miss_var(beer_brewery_merged)</code></pre>
+<pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please use `guide = &quot;none&quot;` instead.</code></pre>
+<p><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="categorizing-beer-type" class="section level2">
+<h2>Categorizing beer type</h2>
+<p>We want to group the different beers by type of beer. We do this by
+creating a list of common beer types and assigning by the name of the
+beer.</p>
+<pre><code>##         Ale       Cider       Fruit  Hefeweizen         IPA      Kölsch       Lager Oktoberfest       Other     Pilsner      Porter 
+##         976          37          49          40         558          42         158          30         204          91          74 
+##       Stout     Witbier 
+##         100          51</code></pre>
+<p>From this grouping, we see that there are 976 ales, 558 IPAs, and a
+variety of other beer types.</p>
+<p>We use this code to see how the ABV and IBU compare for all the
+different types of beers</p>
+<pre><code>## Warning: Removed 62 rows containing missing values (geom_point).</code></pre>
+<p><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+From these plots, we can see that all the ‘ciders’ have missing values.
+We will take care of these in the next chunk of code.</p>
+</div>
+<div id="removing-cider-and-verifying" class="section level2">
+<h2>Removing Cider and verifying</h2>
+<p>We create a new df with the ciders filtered out. we then recreate the
+above plots that show how the ABV and IBU compare for all the different
+types of beers</p>
+<pre><code>##         Ale       Fruit  Hefeweizen         IPA      Kölsch       Lager Oktoberfest       Other     Pilsner      Porter       Stout 
+##         976          49          40         558          42         158          30         204          91          74         100 
+##     Witbier 
+##          51</code></pre>
+<pre><code>## Warning: Removed 62 rows containing missing values (geom_point).</code></pre>
+<p><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="dropping-abv-nasrework" class="section level2">
+<h2>Dropping ABV NAs–rework</h2>
+</div>
+<div id="knn-imputation" class="section level2">
+<h2>kNN Imputation</h2>
+<p>This is where we start the kNN process. We impute the missing values
+with a kNN model.
+<img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+From the plots above, we see that the missing values have been
+accurately imputed with five of their nearest neighbors.</p>
+</div>
+</div>
+<div id="question-4" class="section level1">
+<h1>Question 4</h1>
+<div id="finding-median-abv-and-ibu-per-state" class="section level2">
+<h2>Finding median ABV and IBU per State</h2>
+<p>We will create new dataframes that are grouped by state and have the
+median ABV/IBU. We will use these new dataframes to create barplots to
+visually see the differences of medians for each state. This will be
+followed by more USA heatmaps. These ones showing the median ABV/IBU.
+<img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-12-1.png" width="672" /><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-12-2.png" width="672" /><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-12-3.png" width="672" /><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-12-4.png" width="672" /></p>
+</div>
+</div>
+<div id="question-5" class="section level1">
+<h1>Question 5</h1>
+<div id="max-abv" class="section level2">
+<h2>Max ABV</h2>
+<p>We changed the names of two columns that were automatically named
+from when we merged the datasets. We extract the observation with the
+highest ABV and put it in a dataframe.</p>
+<p>The max ABV is found in Lee Hill Series Vol. 5 - Belgian Style
+Quadrupel Ale, which has an ABV of .128</p>
+</div>
+<div id="max-ibu" class="section level2">
+<h2>Max IBU</h2>
+<p>We extract the observation with the highest IBU and put it in a
+dataframe.</p>
+<p>The max IBU is found in Bitter Bitch Imperial IPA, with an IBU of
+138.</p>
+</div>
+</div>
+<div id="question-6" class="section level1">
+<h1>Question 6</h1>
+<div id="stats-of-abv" class="section level2">
+<h2>Stats of ABV</h2>
+<p>We made a table that shows basic summary statistics for the ABV. We
+also made a couple plots to visually show these summary statistics.</p>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## 0.00100 0.05000 0.05600 0.05976 0.06700 0.12800</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-15-1.png" width="672" /><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-15-2.png" width="672" />
+We can see basic summary statistics in the table below: Min. 1st Qu.
+Median Mean 3rd Qu. Max. 0.00100 0.05000 0.05600 0.05976 0.06700
+0.12800</p>
+</div>
+</div>
+<div id="question-7" class="section level1">
+<h1>Question 7</h1>
+<div id="abv-vs-ibu-scatter" class="section level2">
+<h2>ABV vs IBU scatter</h2>
+<p>We created a scatterplot to help see the correlation between ABV and
+IBU. We also looked at the exact correlation coefficient.</p>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<pre><code>## [1] 0.7222858</code></pre>
+<p>The correlation coefficient is 0.7222. This suggests that the average
+unit of IBU will increase by 0.7222 units for every one unit of increase
+in ABV.</p>
+</div>
+</div>
+<div id="question-8" class="section level1">
+<h1>Question 8</h1>
+<div id="ipa-vs-other-ales" class="section level2">
+<h2>IPA vs other Ales</h2>
+<p>We made a new dataframe that only contains IPA and Ale beer types. We
+built a scatterplot to help visualize the differences between the two
+types of beer and the ABV and IBU.</p>
+<pre><code>##    Brewery_id     Beer Name            Beer_ID            ABV               IBU            Style               Ounces      Brewery Name      
+##  Min.   :  1.0   Length:1492        Min.   :   1.0   Min.   :0.02700   Min.   :  4.00   Length:1492        Min.   :12.00   Length:1492       
+##  1st Qu.: 93.0   Class :character   1st Qu.: 792.8   1st Qu.:0.05100   1st Qu.: 25.80   Class :character   1st Qu.:12.00   Class :character  
+##  Median :205.0   Mode  :character   Median :1474.5   Median :0.06000   Median : 42.00   Mode  :character   Median :12.00   Mode  :character  
+##  Mean   :230.1                      Mean   :1431.8   Mean   :0.06131   Mean   : 46.97                      Mean   :13.59                     
+##  3rd Qu.:361.2                      3rd Qu.:2076.2   3rd Qu.:0.07000   3rd Qu.: 65.00                      3rd Qu.:16.00                     
+##  Max.   :558.0                      Max.   :2692.0   Max.   :0.09900   Max.   :138.00                      Max.   :32.00                     
+##                                                                                                                                              
+##      City               State           beerCat   
+##  Length:1492         CO    :170   Ale       :944  
+##  Class :character    CA    :123   IPA       :548  
+##  Mode  :character    IN    : 87   Fruit     :  0  
+##                      MI    : 85   Hefeweizen:  0  
+##                      OR    : 84   Kölsch    :  0  
+##                      TX    : 73   Lager     :  0  
+##                     (Other):870   (Other)   :  0</code></pre>
+<p><img src="MSDS_6306_Beer_Project_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
+</div>
+<div id="question-9" class="section level1">
+<h1>Question 9</h1>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+---
+title: "Case Study Two"
+author: "Austin Webb"
+date: "2022-07-30"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r echo=FALSE}
+
+# Install the packages
+library(shiny)
+library(ggplot2)
+library(tidyverse)
+
+# Start User Interface
+ui <- shinyUI(fluidPage(# Title
+  titlePanel("Frito Lay"),
+  tabsetPanel(
+    # First Tab Title
+    tabPanel(
+      "Upload File",
+      titlePanel("Uploading Files"),
+      sidebarLayout(
+        sidebarPanel(
+          # Upload file button
+          fileInput(
+            'file1',
+            'Choose CSV File',
+            accept = c('text/csv',
+                       'text/comma-separated-values,text/plain',
+                       '.csv')
+          ),
+          tags$br(),
+          # Does the file have headers button
+          checkboxInput('header', 'Header', TRUE),
+          # What is the delimiter button
+          radioButtons('sep', 'Separator',
+                       c(
+                         Comma = ',',
+                         Semicolon = ';',
+                         Tab = '\t'
+                       ),
+                       ','),
+          # Quotes button
+          radioButtons(
+            'quote',
+            'Quote',
+            c(
+              None = '',
+              'Double Quote' = '"',
+              'Single Quote' = "'"
+            ),
+            '"'
+          ),
+        ),
+        # End of sidebar panel
+        
+        mainPanel(# Output table
+          tableOutput('contents')) # End of main panel
+      )
+    ),
+    # Second Tab Title
+    tabPanel(
+      "Plots",
+      pageWithSidebar(
+        headerPanel('Plots'),
+        sidebarPanel(
+          # Empty inputs - they will be updated after the data is uploaded
+          selectInput('xcol', 'X Variable', ""),
+          selectInput('ycol', 'Y Variable', "", selected = ""),
+          
+          # Filter attrition
+          checkboxInput("Filter", "Filter by Attrition?"),
+          
+          # regression line
+          checkboxInput("Regression", "Add regression line?"),
+          
+          # Pick a plot
+          selectInput(
+            'Plot',
+            label = ('Which Plot?'),
+            choices = list(
+              'Scatter' = 'Scatter',
+              'Box' = 'Box',
+              'Histogram' = 'Histogram'
+            )
+          )
+          
+        ),
+        # End of sidebar panel
+        
+        mainPanel(
+          # Title for first plot
+          titlePanel('No Filter'),
+          # Output first plot
+          plotOutput('MyPlot'),
+          # Title for second plot
+          titlePanel('Filtered by Attrition'),
+          # Output second plot
+          plotOutput('filteredPlot'),
+          tags$br()
+          
+        )
+      )
+    )
+  )))
+
+server <- shinyServer(function(input, output, session) {
+  data <- reactive({
+    # Require input
+    req(input$file1)
+    # Assign input to inFile
+    inFile <- input$file1
+    # Assign the csv to a dataframe called df
+    df <-
+      read.csv(
+        inFile$datapath,
+        header = input$header,
+        sep = input$sep,
+        quote = input$quote
+      )
+    
+    
+    # Update inputs for the x columns
+    updateSelectInput(
+      session,
+      inputId = 'xcol',
+      label = 'X Variable',
+      choices = names(df),
+      selected = names(df)
+    )
+    # Update inputs for the y columns
+    updateSelectInput(
+      session,
+      inputId = 'ycol',
+      label = 'Y Variable',
+      choices = names(df),
+      selected = names(df)[2]
+    )
+    
+    return(df)
+  })
+  
+  # Output table
+  output$contents <- renderTable({
+    # Output the head of the data
+    head(data())
+  })
+  
+  # Output first plot
+  output$MyPlot <- renderPlot({
+    # Histogram
+    if (input$Plot == 'Histogram') {
+      ggplot(data(), aes_string(x = input$xcol)) +
+        geom_histogram(color = 'blue', fill = 'red')
+    } # End of if histogram
+    
+    # Scatterplot
+    else if (input$Plot == 'Scatter') {
+      if (input$Regression) {
+        ggplot(data(), aes_string(x = input$xcol, y = input$ycol)) +
+          geom_point(color = 'red') +
+          geom_smooth(method = lm,
+                      color = 'blue',
+                      fill = 'blue')
+      } # end regression if statement
+      else {
+        ggplot(data(), aes_string(x = input$xcol, y = input$ycol)) +
+          geom_point(color = 'red')
+      } # end else regression statement
+      
+    } # End of if scatterplot
+    
+    else {
+      ggplot(data(), aes_string(x = input$xcol, y = input$ycol)) +
+        geom_boxplot(fill = 'red',
+                     color = 'blue')
+    } # End of if boxplot
+  }) # End of first plot
+  
+  # Output second plot (filtered)
+  output$filteredPlot <- renderPlot({
+    # If statement to filter by attrition
+    if (input$Filter) {
+      filtered <- data() %>% filter(Attrition == 'Yes')
+    } else {
+      filtered <- data()
+    }
+    
+    # Histogram
+    if (input$Plot == 'Histogram') {
+      ggplot(filtered, aes_string(x = input$xcol)) +
+        geom_histogram(color = 'blue', fill = 'red')
+    } # End of if histogram
+    
+    # Scatterplot
+    else if (input$Plot == 'Scatter') {
+      if (input$Regression) {
+        ggplot(filtered, aes_string(x = input$xcol, y = input$ycol)) +
+          geom_point(color = 'red') +
+          geom_smooth(method = lm,
+                      color = 'blue',
+                      fill = 'blue')
+      } # end regression if statement
+      else {
+        ggplot(filtered, aes_string(x = input$xcol, y = input$ycol)) +
+          geom_point(color = 'red')
+      } # end else regression statement
+    } # End of scatterplot
+    
+    # Boxplot
+    else {
+      ggplot(filtered, aes_string(x = input$xcol, y = input$ycol)) +
+        geom_boxplot(fill = 'red',
+                     color = 'blue')
+    } # End of if boxplot
+  }) # End of filtered plot
+}) # End of server
+
+
+
+shinyApp(ui, server)
+
+```
