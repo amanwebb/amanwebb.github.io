@@ -3,7 +3,8 @@ title: "Beer and Breweries"
 author: "Tadd Backus & Austin Webb"
 date: "`r Sys.Date()`"
 output:
-  html_document: default
+  html_document:
+      theme: darkly
 ---
 
 # Introduction and Overview
