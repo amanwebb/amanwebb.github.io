@@ -9,11 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Austin Webb" />
+<meta name="author" content="Michael Schulte &amp; Austin Webb" />
 
-<meta name="date" content="2022-08-11" />
+<meta name="date" content="2022-07-28" />
 
-<title>Simple Website</title>
+<title>Shiny App</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -34,6 +34,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -243,42 +245,80 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">My Data Science Website</a>
+      <a class="navbar-brand" href="index.html">Austin Webb's Portfolio</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
 </li>
 <li>
-  <a href="MSDS_6306_Beer_Project.html">Beer Project Description</a>
+  <a href="about.html">About</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Term One</li>
+    <li>
+      <a href="MSDS_6306_Beer_Project.html">Beer Project Description</a>
+    </li>
+    <li>
+      <a href="https://austin-webb.shinyapps.io/Beer_App/">Beer App</a>
+    </li>
+    <li>
+      <a href="https://austin-webb.shinyapps.io/Housing/">Housing App</a>
+    </li>
+    <li>
+      <a href="https://austin-webb.shinyapps.io/Frito_Lay_Project/">Attrition App</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Term Two</li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Personal Projects</li>
+    <li class="dropdown-header">Basketball</li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="austinwebb@mail.smu.edu">
+    <span class="fa fa-envelope-o"></span>
+     
+    Contact Me
+  </a>
+</li>
+<li>
+  <a href="https://github.com/amanwebb">
+    <span class="fa fa-github"></span>
+     
+    GitHub
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div id="header">
+<div id="section-header">
 
 
 
-<h1 class="title toc-ignore">Simple Website</h1>
-<h4 class="author">Austin Webb</h4>
-<h4 class="date">2022-08-11</h4>
+<h1 class="title toc-ignore">Shiny App</h1>
+<h4 class="author">Michael Schulte &amp; Austin Webb</h4>
+<h4 class="date">2022-07-28</h4>
 
 </div>
 
 
-<div id="the-simple-yet-awesome-website" class="section level1">
-<h1>The simple yet awesome website</h1>
-<div id="note-the-six-lines-above-are-the-yaml-tags"
-class="section level2">
-<h2>Note the six lines above are the YAML tags</h2>
-</div>
-</div>
+<iframe data-deferred-src="appba6689ca3c9989ee86c4e98aa719b728/?w=&amp;__subapp__=1" width="100%" height="400" class="shiny-frame shiny-frame-deferred"></iframe>
 
 
 
@@ -302,7 +342,7 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function () {
-  window.buildTabsets("TOC");
+  window.buildTabsets("section-TOC");
 });
 
 $(document).ready(function () {
