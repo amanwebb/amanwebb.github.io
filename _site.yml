@@ -32,7 +32,7 @@ navbar:
     - text: "Contact Me"
       icon: fa-envelope-o
       href: 
-        mailto: austinwebb@mail.smu.edu
+        mailto: <austinwebb@mail.smu.edu>
     - text: "GitHub"
       icon: fa-github
       href: https://github.com/amanwebb

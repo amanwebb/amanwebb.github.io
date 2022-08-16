@@ -9,15 +9,15 @@ Here is where you can find all the data needed to run the projects yourself. You
 
 
 ### Beer Project Data
-    1) Beers: https://github.com/amanwebb/beerAndBreweries/blob/main/Data/Beer.csv
-    2) Breweries: https://github.com/amanwebb/beerAndBreweries/blob/main/Data/Breweries.csv
+1) [`Beers.csv`](https://github.com/amanwebb/beerAndBreweries/blob/main/Data/Beer.csv)
+2) [`Breweries`](https://github.com/amanwebb/beerAndBreweries/blob/main/Data/Breweries.csv)
         
 
 ### Housing Project Data
-    1) Housing: https://github.com/amanwebb/CaseStudy2DDS/blob/main/test.csv
+1) [`Housing`](https://github.com/amanwebb/CaseStudy2DDS/blob/main/test.csv)
 
 
 ### Attrition Project Data
-    1) Attrition: https://github.com/amanwebb/CaseStudy2DDS/blob/main/CaseStudy2-data.csv
+1) [`Attrition`](https://github.com/amanwebb/CaseStudy2DDS/blob/main/CaseStudy2-data.csv)
 
 
