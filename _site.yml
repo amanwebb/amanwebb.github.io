@@ -8,6 +8,10 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
+    - text: "Resume"
+      href: August-Resume.pdf
+    - text: "Data"
+      # href: 
     - text: "Projects"
       menu:
         - text: "Term One"
@@ -32,6 +36,9 @@ navbar:
     - text: "GitHub"
       icon: fa-github
       href: https://github.com/amanwebb
+    - text: LinkedIn
+      icon: fa-linkedin
+      href: www.linkedin.com/in/austin-webb-08823b159
 output:
   html_document:
     theme: darkly
