@@ -11,7 +11,7 @@ navbar:
     - text: "Resume"
       href: August-Resume.pdf
     - text: "Data"
-      # href: 
+      href: August-Resume.pdf
     - text: "Projects"
       menu:
         - text: "Term One"
