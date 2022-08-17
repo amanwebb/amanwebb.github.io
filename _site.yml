@@ -2,6 +2,7 @@ name: "Austin Webb"
 navbar:
   title: "Austin Webb's Portfolio"
   # type: "Inverse"
+  favicon: favicon.ico
   left:
     - text: "Home"
       icon: fa-home
