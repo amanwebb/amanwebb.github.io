@@ -3,6 +3,8 @@ navbar:
   title: "Austin Webb's Portfolio"
   # type: "Inverse"
   favicon: favicon.ico
+  logo:
+    image: favicon.ico
   left:
     - text: "Home"
       icon: fa-home

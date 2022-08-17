@@ -3,21 +3,23 @@ output: html_document
 ---
 
 
-## Links to the data
+## Links to the Data
 
 Here is where you can find all the data needed to run the projects yourself. You can also download this data to mess around with the shiny apps associated with the projects.
 
+You can learn more about the individual data on the project description page.
 
-### Beer Project Data
-1) [`Beers.csv`](https://github.com/amanwebb/beerAndBreweries/blob/main/Data/Beer.csv)
+
+#### Beer Project Data
+1) [`Beers`](https://github.com/amanwebb/beerAndBreweries/blob/main/Data/Beer.csv)
 2) [`Breweries`](https://github.com/amanwebb/beerAndBreweries/blob/main/Data/Breweries.csv)
         
 
-### Housing Project Data
+#### Housing Project Data
 1) [`Housing`](https://github.com/amanwebb/CaseStudy2DDS/blob/main/test.csv)
 
 
-### Attrition Project Data
+#### Attrition Project Data
 1) [`Attrition`](https://github.com/amanwebb/CaseStudy2DDS/blob/main/CaseStudy2-data.csv)
 
 
